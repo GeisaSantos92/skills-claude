@@ -1,6 +1,6 @@
 ---
 name: layout-briefing
-description: Gera o layout (landing page, site institucional, página de serviço, portfólio) a partir de uma pasta de materiais do cliente. Varre a pasta (logos, favicon, imagens, textos/docx/pdf, paleta, fontes, referências), monta um briefing estruturado com o que existe e o que falta, define a direção de design e só então cria o layout em HTML/CSS/JS pronto para virar tema WordPress. Use quando o usuário pedir "criar o layout", "montar o briefing", "fazer o layout desse cliente", "criar a página a partir dessa pasta", "gerar o design do site" ou passar uma pasta com materiais de marca. Evita layout genérico de IA e nunca inventa dados do cliente.
+description: Gera o layout (landing page, site institucional, página de serviço, portfólio) a partir de uma pasta de materiais do cliente. Varre a pasta (logos, favicon, imagens, textos/docx/pdf, paleta, fontes, referências), monta um briefing estruturado com o que existe e o que falta, define a direção de design e só então cria o layout em HTML/CSS/JS pronto para virar tema WordPress. Use quando o usuário pedir "montar o briefing", "levantar o que falta", "fazer o layout desse cliente a partir dessa pasta", "criar a página a partir dessa pasta" ou passar uma pasta bruta de materiais de marca e for preciso organizar tudo antes. Evita layout genérico de IA e nunca inventa dados do cliente. Se o foco é só o design (direção de arte, compor, melhorar o visual), use a skill layout-design.
 ---
 
 # Layout a partir de briefing
