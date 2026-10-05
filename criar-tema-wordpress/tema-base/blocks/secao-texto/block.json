@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "starter/secao-texto",
+	"title": "Seção: Texto livre",
+	"category": "starter-secoes",
+	"icon": "text-page",
+	"description": "Wrapper com container e tipografia do tema para conteúdo livre (parágrafos, listas, imagens) dentro da landing.",
+	"textdomain": "started-theme",
+	"supports": { "html": false, "customClassName": false },
+	"editorScript": "starter-block-secao-texto",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,306 @@
+/* ==========================================================================
+   Started Theme — estilos da listagem do blog (/blog).
+
+   Enfileirado só em is_home() (inc/enqueue.php).
+   Depende dos tokens declarados em theme.css.
+
+   Figma: arquivo "Started Theme", frame "Blog" (node 15855-99082).
+   ========================================================================== */
+
+
+/* ==========================================================================
+   COMPONENTE SHARED — blog-tag (pill de categoria)
+   Reusado no destaque e nos cards.
+   ========================================================================== */
+
+.blog-tag {
+	display: inline-flex;
+}
+
+.blog-tag a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px 12px;
+	background: var(--cor-fundo-suave);    /* #f5f9ff */
+	border-radius: var(--raio-pill);
+	font-family: var(--fonte-base);
+	font-size: var(--tam-caption);         /* 13px */
+	font-weight: 600;
+	line-height: 1.6;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--cor-texto-marca);         /* #3551f2 */
+	white-space: nowrap;
+	text-decoration: none;
+	transition: background-color 0.2s ease;
+}
+
+.blog-tag a:hover,
+.blog-tag a:focus-visible {
+	background: var(--cor-texto-clara-suave);
+}
+
+/* ==========================================================================
+   1. DESTAQUE — breadcrumb + post principal em grade 3:2
+   ========================================================================== */
+
+.blog-destaque {
+	background: var(--cor-fundo);
+	padding-bottom: 80px;
+}
+
+/* --- Breadcrumb ----------------------------------------------------------- */
+
+.blog-destaque__breadcrumb {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding-block: 32px;
+	color: var(--cor-texto-alt);           /* #566f9d */
+}
+
+.blog-destaque__breadcrumb-home {
+	display: flex;
+	align-items: center;
+	color: inherit;
+	text-decoration: none;
+	transition: color 0.15s;
+}
+
+.blog-destaque__breadcrumb-home:hover {
+	color: var(--cor-texto-marca);
+}
+
+.blog-destaque__breadcrumb svg {
+	display: block;
+	flex-shrink: 0;
+}
+
+.blog-destaque__breadcrumb-atual {
+	font-family: var(--fonte-base);
+	font-size: var(--tam-body);
+	font-weight: 400;
+	line-height: 1.6;
+	color: var(--cor-texto-alt);
+}
+
+/* --- Conteúdo: grade imagem 3fr + info 2fr -------------------------------- */
+
+.blog-destaque__conteudo {
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	column-gap: 40px;
+}
+
+.blog-destaque__imagem-link {
+	display: block;
+}
+
+.blog-destaque__info-link {
+	display: block;
+	text-decoration: none;
+}
+
+.blog-destaque__imagem {
+	aspect-ratio: 16 / 9;
+	border-radius: var(--raio-card);       /* 12px */
+	overflow: hidden;
+	background: var(--cor-texto-clara-suave);
+}
+
+.blog-destaque__imagem img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	max-width: none;
+}
+
+.blog-destaque__info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	padding-right: 40px;
+	gap: 0;
+}
+
+.blog-destaque__info .blog-tag {
+	margin-bottom: 12px;
+}
+
+.blog-destaque__titulo {
+	font-family: var(--fonte-titulo);
+	font-size: var(--tam-h4);             /* clamp(1.625rem, 2.5vw, 2.25rem) */
+	font-weight: 600;
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+	color: var(--cor-texto);              /* #1f242d */
+	margin: 0;
+}
+
+.blog-destaque__data {
+	font-family: var(--fonte-base);
+	font-size: var(--tam-body);
+	font-weight: 500;
+	line-height: 1.6;
+	color: var(--cor-texto-alt);          /* #566f9d */
+	margin: 4px 0 0;
+}
+
+.blog-destaque__excerpt {
+	font-family: var(--fonte-base);
+	font-size: var(--tam-body);
+	font-weight: 400;
+	line-height: 1.6;
+	color: var(--cor-texto-suave);        /* #4a5364 */
+	margin: 24px 0 0;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+
+/* ==========================================================================
+   3. CARDS — grade 3 × 2 de artigos
+   ========================================================================== */
+
+.blog-cards {
+	background: var(--cor-fundo);
+	padding-top: 120px;
+	padding-bottom: 80px;
+}
+
+/* Paginação — .site-blog não tem o padding-bottom do .site-main, então o
+   componente global (assets/css/theme.css) fica colado na faixa de CTA
+   seguinte sem esse respiro extra embaixo. */
+.site-blog .pagination {
+	margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.blog-cards__grade {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 41px;
+	row-gap: 80px;
+}
+
+/* --- Card individual ------------------------------------------------------ */
+
+.blog-card {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.blog-card__imagem-link {
+	display: block;
+	width: 100%;
+}
+
+.blog-card__corpo-link {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	text-decoration: none;
+}
+
+.blog-card__imagem {
+	aspect-ratio: 297.25 / 167.2;         /* ~16:9 — medida Figma */
+	width: 100%;
+	border-radius: var(--raio);            /* 8px */
+	overflow: hidden;
+	background: var(--cor-texto-clara-suave);
+}
+
+.blog-card__imagem img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	max-width: none;
+}
+
+.blog-card__corpo {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-top: 16px;
+	width: 100%;
+}
+
+.blog-card__corpo .blog-tag {
+	/* Herda o estilo global do .blog-tag. */
+}
+
+/* Na seção cards, a tag tem fundo branco (canvas é branco) —
+   mantém o mesmo visual do Figma (surface-blue-01 ainda é o token correto). */
+
+.blog-card__titulo {
+	font-family: var(--fonte-titulo);
+	font-size: var(--tam-h6);             /* 20px */
+	font-weight: 600;
+	line-height: 1.2;
+	color: var(--cor-texto-marca-escura);  /* #003187 */
+	margin: 0;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.blog-card:hover .blog-card__titulo {
+	text-decoration: underline;
+}
+
+.blog-card__data {
+	font-family: var(--fonte-base);
+	font-size: var(--tam-body);
+	font-weight: 500;
+	line-height: 1.6;
+	color: var(--cor-texto-alt);           /* #566f9d */
+	margin: 0;
+}
+
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+/* Tablet — cards de 3 passam para 2 colunas */
+@media (max-width: 1024px) {
+	.blog-cards__grade {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+	/* Destaque — empilha imagem acima da info */
+	.blog-destaque {
+		padding-bottom: 48px;
+	}
+
+	.blog-destaque__conteudo {
+		grid-template-columns: 1fr;
+		row-gap: 24px;
+	}
+
+	.blog-destaque__info {
+		padding-right: 0;
+	}
+
+	/* Cards — coluna única */
+	.blog-cards {
+		padding-top: 64px;
+		padding-bottom: 80px;
+	}
+
+	.blog-cards__grade {
+		grid-template-columns: 1fr;
+		row-gap: 48px;
+	}
+}

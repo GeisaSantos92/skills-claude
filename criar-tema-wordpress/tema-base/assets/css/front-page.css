@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Started Theme — seções da página inicial.
+   Enfileirado só em is_front_page() (inc/enqueue.php). Use os tokens de
+   theme.css; uma seção por bloco, na ordem do front-page.php.
+   ========================================================================== */
+
+/* --- Hero ----------------------------------------------------------------- */
+
+.hero {
+	padding-block: clamp(64px, 9vw, 140px);
+	background: var(--cor-fundo-suave);
+}
+
+.hero__inner {
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: center;
+	gap: 48px;
+}
+
+.hero__texto {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 24px;
+}
+
+.hero__titulo {
+	font-size: var(--tam-h1);
+	line-height: 1.05;
+}
+
+.hero__titulo em {
+	font-style: normal;
+	color: var(--cor-texto-marca);
+}
+
+.hero__subtitulo {
+	max-width: 56ch;
+	font-size: var(--tam-body-lg);
+	color: var(--cor-texto-suave);
+}
+
+.hero__acoes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.hero__midia img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: var(--raio-card);
+}
+
+@media (min-width: 1024px) {
+	.hero__inner:has(.hero__midia) {
+		grid-template-columns: 1.1fr 1fr;
+	}
+}

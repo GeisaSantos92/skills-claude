@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "starter/stat-item",
+	"title": "Seção: Indicador",
+	"category": "starter-secoes",
+	"icon": "chart-line",
+	"description": "Um indicador (número + rótulo) dentro da faixa de estatísticas.",
+	"textdomain": "started-theme",
+	"parent": [ "starter/stats" ],
+	"attributes": {
+		"numero": { "type": "string", "default": "" },
+		"rotulo": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "customClassName": false, "reusable": false },
+	"editorScript": "starter-block-stat-item",
+	"render": "file:./render.php"
+}
