@@ -18,7 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'R8T_ROLE', 'agenciar8' );
 define( 'R8T_MANAGE_CAP', 'r8t_manage_trainings' );
 define( 'R8T_MEDIA_META', '_r8t_training' );
-define( 'R8T_AGENCY_DOMAIN', 'agenciar8.com.br' );
 
 /**
  * O usuário tem a função agenciar8?
@@ -79,25 +78,9 @@ function r8t_install() {
 		)
 	);
 	if ( ! $has_agency ) {
-		// Administradores da agência (login agenciar8 ou e-mail @agenciar8.com.br) viram agenciar8 na hora.
-		$agency_admins = get_users(
-			array(
-				'role'           => 'administrator',
-				'search'         => '*@' . R8T_AGENCY_DOMAIN,
-				'search_columns' => array( 'user_email' ),
-			)
-		);
-		$agency_login  = get_user_by( 'login', R8T_ROLE );
-		if ( $agency_login && in_array( 'administrator', (array) $agency_login->roles, true ) ) {
-			$agency_admins[] = $agency_login;
-		}
-		foreach ( $agency_admins as $user ) {
-			$user->set_role( R8T_ROLE );
-		}
-
-		if ( ! $agency_admins ) {
-			update_option( 'r8t_needs_owner', 1, false );
-		}
+		// Só quem ativou o plugin vira agenciar8 (r8t_maybe_claim_owner, abaixo).
+		// Os outros administradores continuam administradores, seja qual for o e-mail.
+		update_option( 'r8t_needs_owner', 1, false );
 	}
 
 	update_option( 'r8t_version', R8T_VERSION, false );
@@ -121,8 +104,8 @@ function r8t_maybe_upgrade() {
 add_action( 'admin_init', 'r8t_maybe_upgrade' );
 
 /**
- * Enquanto não houver nenhum agenciar8 (nem admin com e-mail da agência), o
- * primeiro administrador que abrir o painel depois da ativação/atualização vira agenciar8.
+ * Enquanto não houver nenhum agenciar8, o administrador que ativou o plugin
+ * (ou o primeiro que abrir o painel, se a ativação foi pelo WP-CLI) vira agenciar8.
  *
  * @return void
  */

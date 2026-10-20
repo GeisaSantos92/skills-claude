@@ -40,11 +40,10 @@ Editor) consegue contornar. A proteção vale para o uso normal do painel.
 
 1. Copie a pasta `r8-treinamentos/` para `wp-content/plugins/` (ou envie um `.zip`
    dela em Plugins → Adicionar novo → Enviar plugin).
-2. Ative o plugin. Na ativação (ou na atualização a partir da 1.0), se ainda não
-   existir nenhum Agência R8, o administrador com login **agenciar8** e todo
-   administrador com e-mail **@agenciar8.com.br** viram
-   Agência R8. Se não houver nenhum, vira o primeiro administrador que abrir o painel,
-   então nesse caso ative logado com o usuário da agência.
+2. **Ative logado com o usuário da agência.** Se ainda não existir nenhum Agência R8,
+   só quem ativou o plugin vira Agência R8; os outros administradores continuam
+   administradores (o e-mail não importa). Ativado pelo WP-CLI, vira o primeiro
+   administrador que abrir o painel.
 3. Vá em **Treinamentos → Gerenciar** e cadastre os vídeos.
 4. Para tornar outro usuário Agência R8: Usuários → editar → Função "Agência R8"
    (só um Agência R8 vê essa opção). Pelo WP-CLI: `wp user set-role <usuario> agenciar8`.
