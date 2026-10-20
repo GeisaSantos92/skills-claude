@@ -112,8 +112,11 @@ function r8t_handle_save() {
 	$settings  = isset( $_POST['r8t_settings'] ) ? wp_unslash( (array) $_POST['r8t_settings'] ) : array();
 	// phpcs:enable
 
-	update_option( 'r8t_trainings', r8t_sanitize_trainings( array_values( $trainings ) ), false );
+	$trainings = r8t_sanitize_trainings( array_values( $trainings ) );
+
+	update_option( 'r8t_trainings', $trainings, false );
 	update_option( 'r8t_settings', r8t_sanitize_settings( $settings ), false );
+	r8t_sync_training_media( $trainings );
 
 	wp_safe_redirect( add_query_arg( 'updated', '1', r8t_manage_url() ) );
 	exit;

@@ -11,6 +11,15 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 delete_option( 'r8t_trainings' );
 delete_option( 'r8t_settings' );
+delete_option( 'r8t_version' );
+delete_option( 'r8t_needs_owner' );
+delete_post_meta_by_key( '_r8t_training' );
+
+// Quem era Agência R8 volta a ser administrador antes de a função sumir.
+foreach ( get_users( array( 'role' => 'agenciar8', 'fields' => 'ID' ) ) as $r8t_user_id ) {
+	( new WP_User( $r8t_user_id ) )->set_role( 'administrator' );
+}
+remove_role( 'agenciar8' );
 
 global $wpdb;
 // Cache de oEmbed dos vídeos (r8t_oembed_*).

@@ -24,11 +24,12 @@ function r8t_view_capability() {
 
 /**
  * Capability para cadastrar/editar treinamentos e configurações.
+ * Só a função agenciar8 tem (ver access.php); administradores apenas assistem.
  *
  * @return string
  */
 function r8t_manage_capability() {
-	return (string) apply_filters( 'r8t_manage_capability', 'manage_options' );
+	return (string) apply_filters( 'r8t_manage_capability', 'r8t_manage_trainings' );
 }
 
 /**
